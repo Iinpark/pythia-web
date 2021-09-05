@@ -2,18 +2,18 @@
   <div id="app bx--grid">
     <main class="bx--row">
       <div class="bx--col-lg-8 bx--offset-lg-2">
-        <LaunchesList />
+        <LaunchesListPage />
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import LaunchesList from "./pages/LaunchesList.vue";
+import LaunchesListPage from "./pages/LaunchesListPage.vue";
 export default {
   name: "App",
   components: {
-    LaunchesList,
+    LaunchesListPage,
   },
 };
 </script>
