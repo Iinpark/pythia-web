@@ -1,9 +1,16 @@
 <template>
-  <section></section>
+  <section>
+    <next-launch-tile />
+  </section>
 </template>
 
 <script>
-export default {};
+import NextLaunchTile from "../components/NextLaunchTile/NextLaunchTile.vue";
+export default {
+  components: {
+    NextLaunchTile,
+  },
+};
 </script>
 
 <style></style>
