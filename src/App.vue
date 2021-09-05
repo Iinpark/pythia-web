@@ -1,6 +1,10 @@
 <template>
-  <div id="app">
-    <LaunchesList />
+  <div id="app bx--grid">
+    <main class="bx--row">
+      <div class="bx--col-lg-8 bx--offset-lg-2">
+        <LaunchesList />
+      </div>
+    </main>
   </div>
 </template>
 
@@ -14,13 +18,4 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
