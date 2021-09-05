@@ -5,13 +5,9 @@
         <cv-grid class="image-background__inside">
           <cv-row>
             <cv-column>
-              <h2>Falcon 9</h2>
+              <h2>Falcon 9, MissionName</h2>
               <p>Sep 15, 15:00</p>
               <p>Kennedy Space Center, USA</p>
-            </cv-column>
-            <cv-column>
-              <h2>Mission name</h2>
-              <cv-link>More</cv-link>
             </cv-column>
           </cv-row>
         </cv-grid>
@@ -47,7 +43,6 @@ export default {};
   object-fit: cover;
   background-position: center;
   filter: brightness(90%);
-  background-image: url(https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launcher_images/pslv_image_20190508083736.jpeg);
 }
 .image-background__inside {
   position: relative;
@@ -60,7 +55,6 @@ export default {};
 }
 
 .bx--tile {
-  color: #f4f4f4;
   height: 100%;
   width: 100%;
 }
