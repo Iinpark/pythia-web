@@ -2,6 +2,7 @@
   <div id="app bx--grid">
     <main class="bx--row">
       <div class="bx--col-lg-8 bx--offset-lg-2">
+        <h1>Next Launch</h1>
         <LaunchesListPage />
       </div>
     </main>
