@@ -3,13 +3,14 @@
     <div class="bx--aspect-ratio bx--aspect-ratio--2x1">
       <img
         class="bx--aspect-ratio--object tile__image"
-        src="https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launcher_images/pslv_image_20190508083736.jpeg"
+        :ripple="false"
+        :src="launch.image"
         alt=""
       />
     </div>
     <div class="tile__description">
-      <h3>Falcon Heavy, Finaly mission</h3>
-      <p>This rocket is going to launch</p>
+      <h3>{{ launch.name }}</h3>
+      <p>{{ launch.description || "No description" }}</p>
     </div>
 
     <div class="tile__buttons">
@@ -20,7 +21,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    launch: Object,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

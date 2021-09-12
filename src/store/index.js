@@ -11,7 +11,7 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_LAUNCHES: (state, payload) => {
-      state = payload;
+      state.launches = payload;
     },
   },
   actions: {
@@ -29,7 +29,6 @@ export default new Vuex.Store({
         };
       });
 
-      debugger;
       commit("SET_LAUNCHES", formatted);
     },
   },
