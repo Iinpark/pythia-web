@@ -31,9 +31,9 @@ export default {};
 .tile {
   display: flex;
   flex-direction: column;
-	height: 460px;
+  height: 460px;
   &__image {
-	object-fit: cover;
+    object-fit: cover;
   }
   &__description {
     padding: 1rem;
