@@ -10,9 +10,16 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import LaunchesListPage from "./pages/LaunchesListPage.vue";
 export default {
   name: "App",
+  methods: {
+    ...mapActions(["FETCH_LAUNCHES"]),
+  },
+  mounted() {
+    this.FETCH_LAUNCHES();
+  },
   components: {
     LaunchesListPage,
   },
