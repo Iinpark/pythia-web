@@ -7,7 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import getLaunches from './hooks/getLaunches.js';
 
-const List = () => {
+const List = ({setSelectedLaunch}) => {
   const items = getLaunches();
   return (
     <MList>
@@ -18,7 +18,7 @@ const List = () => {
           const header = `${item.provider.name} • ${item.name}`;
           const subheader = `${item.provider.name} • ${item.vehicle.name} • ${time || 'Время старта неизвестно'}`;
 
-          return <ListItem disablePadding key={item.id}>
+          return <ListItem onClick={() => setSelectedLaunch(item)} disablePadding key={item.id}>
             <ListItemButton>
               <ListItemAvatar >
                 <Avatar alt={item.name} src={item.image} />
