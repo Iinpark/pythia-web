@@ -1,5 +1,7 @@
-const ImagePlaceholder = (props) => (
-	<img src={`https://placehold.co/${props.size}`} alt="" />
-)
+import React from 'react';
 
-export default ImagePlaceholder
+const ImagePlaceholder = (props) => (
+  <img src={`https://placehold.co/${props.size}`} alt="" />
+);
+
+export default ImagePlaceholder;
