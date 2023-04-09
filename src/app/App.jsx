@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 function App() {
   const [selectedLaunch, setSelectedLaunch] = useState({});
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false} sx={{minWidth: 950}} >
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <List setSelectedLaunch={setSelectedLaunch} />

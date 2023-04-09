@@ -6,12 +6,14 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import getLaunches from './hooks/getLaunches.js';
+import Skeleton from './ui/Skeleton.jsx';
 
 const List = ({setSelectedLaunch}) => {
   const items = getLaunches();
+  // const items = [];
   return (
     <MList>
-      {items.length === 0 && 'Загрузка...'}
+      {items.length === 0 && Array.from({ length: 5 }, (_, index) => <Skeleton key={index} />)}
       {
         items.map((item) => {
           const time = item.t0 && new Date(item.t0).toLocaleString('ru');
