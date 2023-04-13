@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		// "baseUrl": "src",
+	  "composite": true,
+	  "module": "ESNext",
+	  "moduleResolution": "Node",
+	  "allowSyntheticDefaultImports": true,
+	//   "paths": {
+	// 	"@shared":  ["./shared/*"],
+	// 	"@widgets": ["./widgets/*"],
+	// 	}
+	},
+	"include": ["vite.config.ts"]
+  }

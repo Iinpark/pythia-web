@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-
 /**
  * @typedef {Object} LaunchData
  * @property {number} id - The ID of the launch
- * @property {string} cospar_id - The COSPAR ID of the launch
- * @property {string} sort_date - The date of the launch in Unix timestamp format
  * @property {string} name - The name of the launch
+ * @property {string} image - The image of the rocket going to be launched
  * @property {Object} provider - The provider of the launch
  * @property {number} provider.id - The ID of the provider
  * @property {string} provider.name - The name of the provider
@@ -25,33 +23,70 @@ import { useState, useEffect } from 'react';
  * @property {string} pad.location.statename - The name of the state of the location of the launch pad
  * @property {string} pad.location.country - The country of the location of the launch pad
  * @property {string} pad.location.slug - The slug of the location of the launch pad
- * @property {Array<Object>} missions - The missions of the launch
- * @property {number} missions.id - The ID of the mission
- * @property {string} missions.name - The name of the mission
- * @property {string} missions.description - The description of the mission
+ * @property {Array<Object>} mission - The missions of the launch
+ * @property {number} mission.id - The ID of the mission
+ * @property {string} mission.name - The name of the mission
+ * @property {string} mission.description - The description of the mission
  * @property {string} mission_description - The description of the launch mission
  * @property {string} launch_description - The description of the launch
  * @property {string|null} win_open - The opening window of the launch
  * @property {string} t0 - The launch date and time in ISO format
  * @property {string|null} win_close - The closing window of the launch
- * @property {Object} est_date - The estimated date of the launch
- * @property {number} est_date.month - The month of the estimated date of the launch
- * @property {number} est_date.day - The day of the estimated date of the launch
- * @property {number} est_date.year - The year of the estimated date of the launch
- * @property {string|null} est_date.quarter - The quarter of the estimated date of the launch
- * @property {string} date_str - The date of the launch in string format
- * @property {Array<Object>} tags - The tags of the launch
  * @property {number} tags.id - The ID of the tag
  * @property {string} tags.text - The text of the tag
- * @property {string} slug - The slug of the launch
  * @property {string|null} weather_summary - The summary of the launch weather
  * @property {number|null} weather_temp - The temperature of the launch weather
  */
 
+interface LaunchData {
+  id: number;
+  name: string;
+  image: string;
+  provider: {
+    id: number;
+    name: string;
+    slug: string;
+  };
+  vehicle: {
+    id: number;
+    name: string;
+    company_id: number;
+    slug: string;
+  };
+  pad: {
+    id: number;
+    name: string;
+    location: {
+      id: number;
+      name: string;
+      state: string;
+      statename: string;
+      country: string;
+      slug: string;
+    };
+  };
+  mission: {
+    id: number;
+    name: string;
+    description: string;
+  }[];
+  mission_description: string;
+  launch_description: string;
+  win_open: string | null;
+  t0: string;
+  win_close: string | null;
+  tags: {
+    id: number;
+    text: string;
+  }[];
+  weather_summary: string | null;
+  weather_temp: number | null;
+}
+
 /**
  * @returns {Array<LaunchData>} launches
  */
-const useRocketLaunches = (count = 5) => {
+const useRocketLaunches = (count: number = 10): Array<LaunchData> => {
   const [launches, setLaunches] = useState([]);
 
   useEffect(() => {

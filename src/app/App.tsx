@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Container from '@mui/material/Container';
-import List from '@widgets/LaunchesList/Index.jsx';
-import DetailView from '@widgets/DetailView/Index.jsx';
+import List from '@widgets/LaunchesList/Index';
+import DetailView from '@widgets/DetailView/Index';
 import Grid from '@mui/material/Grid';
 
 function App() {
