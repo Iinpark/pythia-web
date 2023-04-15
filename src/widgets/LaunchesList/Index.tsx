@@ -1,12 +1,11 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import MList from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import fetchUpcomingLaunches from './api/fetchUpcomingLaunches';
+import { queryUpcomingLaunches } from '@shared/api/index';
 import Skeleton from './ui/Skeleton.jsx';
 
 const List = ({
@@ -14,10 +13,7 @@ const List = ({
 }: {
   setSelectedLaunch: React.Dispatch<React.SetStateAction<{}>>;
 }) => {
-  const { status, data } = useQuery({
-    queryKey: ['upcoming'],
-    queryFn: fetchUpcomingLaunches,
-  });
+  const { data, status } = queryUpcomingLaunches();
   const launches = data || [];
   return (
     <MList>
