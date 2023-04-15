@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+import { SerializedLaunchData, LaunchData } from '../interfaces';
+
+const baseUrl = import.meta.env.MODE === 'development' ? 'https://lldev.thespacedevs.com' : 'https://ll.thespacedevs.com' ;
+
 /**
  * @typedef {Object} LaunchData
  * @property {number} id - The ID of the launch
@@ -38,73 +41,58 @@ import { useState, useEffect } from 'react';
  * @property {number|null} weather_temp - The temperature of the launch weather
  */
 
-interface LaunchData {
-  id: number;
-  name: string;
-  image: string;
-  provider: {
-    id: number;
-    name: string;
-    slug: string;
-  };
-  vehicle: {
-    id: number;
-    name: string;
-    company_id: number;
-    slug: string;
-  };
-  pad: {
-    id: number;
-    name: string;
-    location: {
-      id: number;
-      name: string;
-      state: string;
-      statename: string;
-      country: string;
-      slug: string;
-    };
-  };
-  mission: {
-    id: number;
-    name: string;
-    description: string;
-  }[];
-  mission_description: string;
-  launch_description: string;
-  win_open: string | null;
-  t0: string;
-  win_close: string | null;
-  tags: {
-    id: number;
-    text: string;
-  }[];
-  weather_summary: string | null;
-  weather_temp: number | null;
+
+
+const fetchUpcomingLaunches = async () : Promise<Array<LaunchData>> => {
+  const response = await fetch(`${baseUrl}/2.2.0/launch/upcoming/`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+  const data = await response.json();
+
+ return data.results.map((i:SerializedLaunchData):LaunchData =>  {
+  return {
+    id: i.id,
+    name: i.name,
+    image: i.image,
+    provider: {
+      id: i.launch_service_provider.id,
+      name: i.launch_service_provider.name,
+      slug: i.launch_service_provider.type,
+    },
+    vehicle: {
+      id: i.rocket.configuration.id,
+      name: i.rocket.configuration.name,
+      company_id: i.launch_service_provider.id,
+      slug: i.rocket.configuration.name,
+    },
+    pad: {
+      id: i.pad.id,
+      name: i.pad.name,
+      location: {
+        id: i.pad.location.id,
+        name: i.pad.location.name,
+        state: i.pad.location.country_code,
+        statename: i.pad.location.name,
+        country: i.pad.location.country_code,
+        slug: i.pad.location.name,
+      },
+    },
+    mission:{
+      id: i.mission.id,
+      name: i.mission.name,
+      description: i.mission.description,
+    },
+    mission_description: i.mission.description,
+    launch_description: i.mission.description,
+    win_open: i.window_start,
+    t0: i.net,
+    win_close: i.window_end,
+    tags: [],
+    weather_summary: null,
+    weather_temp: null,
+  }
+ });
 }
 
-/**
- * @returns {Array<LaunchData>} launches
- */
-const useRocketLaunches = (count: number = 10): Array<LaunchData> => {
-  const [launches, setLaunches] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://fdo.rocketlaunch.live/json/launches/next/${count}`
-        );
-        const data = await response.json();
-        setLaunches(data.result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [count]);
-
-  return launches;
-};
-
-export default useRocketLaunches;
+export default fetchUpcomingLaunches;
