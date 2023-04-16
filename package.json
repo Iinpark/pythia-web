@@ -26,6 +26,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.32.2",
     "firebase-tools": "^11.25.3",
+    "sass": "^1.62.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.0"
   }

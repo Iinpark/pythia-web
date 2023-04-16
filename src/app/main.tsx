@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
@@ -22,7 +16,15 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 // Setup react-query
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      // 5 mins
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
 
 const darkTheme = createTheme({
   palette: {

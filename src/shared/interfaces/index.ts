@@ -1,4 +1,4 @@
-import { LaunchDetails } from './LaunchDetails';
+import { LaunchDetails, SerializedLaunchDetails } from './LaunchDetails';
 
 /**
  * @typedef {Object} LaunchData
@@ -169,4 +169,4 @@ export interface SerializedLaunchData {
   agency_launch_attempt_count_year: number;
 }
 
-export type { LaunchDetails };
+export type { LaunchDetails, SerializedLaunchDetails };

@@ -18,7 +18,7 @@ const List = ({
   return (
     <MList>
       {status === 'loading' &&
-        Array.from({ length: 5 }, (_, index) => <Skeleton key={index} />)}
+        Array.from({ length: 10 }, (_, index) => <Skeleton key={index} />)}
       {launches.map((item) => {
         const time = item.t0 && new Date(item.t0).toLocaleString('ru');
         const header = `${item.provider.name} • ${item.name}`;

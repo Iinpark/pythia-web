@@ -1,35 +1,35 @@
-import { LaunchData } from './index';
+import { LaunchData, SerializedLaunchData } from './index';
 
-interface Update {
+export interface Update {
   id: number;
-  profile_image: string;
+  profileImage: string;
   comment: string;
-  info_url: string;
-  created_by: string;
-  created_on: string;
+  infoUrl: string;
+  createdBy: string;
+  createdBn: string;
 }
-interface InfoURl {
+export interface InfoURL {
   priority: number;
   title: string;
   description: string;
-  feature_image: string;
+  featureImage: string;
   url: string;
 }
-interface vidURl {
+export interface vidURL {
   priority: number;
   title: string;
   description: string;
-  feature_image: string;
+  featureImage: string;
   url: string;
 }
-interface MissionPatch {
+export interface MissionPatch {
   id: number;
   name: string;
   priority: number;
-  image_url: string;
+  imageUrl: string;
   agency: Agency;
 }
-interface Agency {
+export interface Agency {
   id: number;
   url: string;
   name: string;
@@ -37,10 +37,49 @@ interface Agency {
 }
 
 export interface LaunchDetails extends LaunchData {
+  flightclubUrl: string;
+  spacexApiId: string;
+  updates: Update[];
+  infoURLs: InfoURL[];
+  vidURLs: vidURL[];
+  missionPatches: MissionPatch[];
+}
+
+export interface SerializedInfoURL {
+  priority: number;
+  title: string;
+  description: string;
+  feature_image: string;
+  url: string;
+}
+export interface SerializedUpdate {
+  id: number;
+  profile_image: string;
+  comment: string;
+  infoUrl: string;
+  created_by: string;
+  created_on: string;
+}
+export interface SerializedVidURL {
+  priority: number;
+  title: string;
+  description: string;
+  feature_image: string;
+  url: string;
+}
+
+export interface SerializedMissionPatch {
+  id: number;
+  name: string;
+  priority: number;
+  image_url: string;
+  agency: Agency;
+}
+export interface SerializedLaunchDetails extends SerializedLaunchData {
   flightclub_url: string;
   r_spacex_api_id: string;
-  updates: Update[];
-  infoURLs: InfoURl[];
-  vidURLs: vidURl[];
-  mission_patches: MissionPatch[];
+  updates: SerializedUpdate[];
+  infoURLs: SerializedInfoURL[];
+  vidURLs: SerializedVidURL[];
+  mission_patches: SerializedMissionPatch[];
 }

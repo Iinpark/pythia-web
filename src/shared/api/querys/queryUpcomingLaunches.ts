@@ -5,6 +5,7 @@ const queryUpcomingLaunches = () => {
   const result = useQuery({
     queryKey: ['upcoming'],
     queryFn: fetchUpcomingLaunches,
+    staleTime: 1000 * 60 * 5,
   });
 
   return result;
