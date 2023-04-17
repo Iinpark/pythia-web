@@ -8,7 +8,7 @@ const fetchLaunchDetails = async (id: string): Promise<LaunchDetails> => {
     throw new Error(response.statusText);
   }
   const data = await response.json();
-  debugger;
+
   return LaunchDetailsAdapter(data);
 };
 

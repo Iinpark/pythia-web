@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
+import YTIframe from '@shared/ui/Media/YTIframe';
 import { LaunchData } from '@shared/interfaces';
 import { queryLaunchDetails } from '@shared/api/index';
 import './index.scss';
@@ -7,7 +8,7 @@ import './index.scss';
 type DetailViewProps = { selectedLaunch: LaunchData | {} };
 
 const DetailView = ({ selectedLaunch }: DetailViewProps) => {
-  if (!selectedLaunch.name) return <div></div>;
+  if (!selectedLaunch?.name) return <div></div>;
 
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   useEffect(() => {
@@ -17,9 +18,10 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
   const { data, status, error } = queryLaunchDetails(selectedLaunch.id);
   const launchDetails = data! || {};
 
+  if (status === 'loading')
+    return <Typography variant='h1'>Loading...</Typography>;
   return (
     <div className='detail-view'>
-      {status === 'loading' && <Typography variant='h1'>Loading...</Typography>}
       {error! && <Typography variant='h1'>Error</Typography>}
       {launchDetails.image && (
         <img
@@ -34,9 +36,13 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
           width='100%'
         />
       )}
-
       <Typography variant='h1'>{launchDetails.name}</Typography>
       <Typography variant='h5'>{launchDetails.mission_description}</Typography>
+
+      {launchDetails.vidURLs[0] &&
+        launchDetails.vidURLs[0].source === 'youtube' && (
+          <YTIframe src={launchDetails.vidURLs[0]?.url} />
+        )}
     </div>
   );
 };

@@ -15,12 +15,15 @@ export interface InfoURL {
   featureImage: string;
   url: string;
 }
+
+export type VideoSource = 'youtube' | 'unknown';
 export interface vidURL {
   priority: number;
   title: string;
   description: string;
   featureImage: string;
   url: string;
+  source: VideoSource;
 }
 export interface MissionPatch {
   id: number;

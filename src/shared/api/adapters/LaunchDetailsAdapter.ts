@@ -8,6 +8,7 @@ import {
   vidURL,
   MissionPatch,
   SerializedMissionPatch,
+  VideoSource,
 } from '../../interfaces/LaunchDetails';
 import { LaunchDataAdapter } from './index.js';
 
@@ -32,13 +33,22 @@ export function InfoURLAdapter(serializedInfoURL: SerializedInfoURL): InfoURL {
   };
 }
 
+// TODO: перенести в @shared/utils
+const videoSourceExtractor = (url: string): VideoSource => {
+  const youtubeRegex =
+    /(?:https?:\/\/)?(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\W]+)/;
+
+  return youtubeRegex.test(url) ? 'youtube' : 'unknown';
+};
 export function vidURLAdapter(serializedVidURL: SerializedVidURL): vidURL {
+  const source = videoSourceExtractor(serializedVidURL.url);
   return {
     priority: serializedVidURL.priority,
     title: serializedVidURL.title,
     description: serializedVidURL.description,
     featureImage: serializedVidURL.feature_image,
     url: serializedVidURL.url,
+    source: source,
   };
 }
 

@@ -7,6 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { queryUpcomingLaunches } from '@shared/api/index';
 import Skeleton from './ui/Skeleton.jsx';
+import './index.scss';
 
 const List = ({
   setSelectedLaunch,
@@ -16,7 +17,7 @@ const List = ({
   const { data, status } = queryUpcomingLaunches();
   const launches = data || [];
   return (
-    <MList>
+    <MList className='launches-list'>
       {status === 'loading' &&
         Array.from({ length: 10 }, (_, index) => <Skeleton key={index} />)}
       {launches.map((item) => {
@@ -28,7 +29,10 @@ const List = ({
 
         return (
           <ListItem
-            onClick={() => setSelectedLaunch(item)}
+            onClick={() => {
+              location.hash = `id=${item.id}`;
+              setSelectedLaunch(item);
+            }}
             disablePadding
             key={item.id}>
             <ListItemButton>
