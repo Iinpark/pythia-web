@@ -15,3 +15,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PYTHIA_WEB_38AA6 }}'
           projectId: pythia-web-38aa6
+          expires: 30d
