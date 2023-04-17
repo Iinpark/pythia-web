@@ -8,14 +8,17 @@ import './index.scss';
 type DetailViewProps = { selectedLaunch: LaunchData | {} };
 
 const DetailView = ({ selectedLaunch }: DetailViewProps) => {
-  if (!selectedLaunch?.name) return <div></div>;
+  const isHasHash = location.hash.includes('id=');
+  if (!selectedLaunch?.name && !isHasHash) return null;
 
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   useEffect(() => {
     setIsImageLoaded(false);
   }, [selectedLaunch]);
 
-  const { data, status, error } = queryLaunchDetails(selectedLaunch.id);
+  const { data, status, error } = queryLaunchDetails(
+    selectedLaunch.id || location.hash.replace('#id=', '')
+  );
   const launchDetails = data! || {};
 
   if (status === 'loading')
