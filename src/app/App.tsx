@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import Container from '@mui/material/Container';
-import List from '@widgets/LaunchesList/Index';
+import List from '@widgets/LaunchesList/ui/List';
+import Drawer from '@widgets/LaunchesList/ui/Drawer';
 import DetailView from '@widgets/DetailView/Index';
 import Grid from '@mui/material/Grid';
+import Hidden from '@mui/material/Hidden';
 
 function App() {
   const [selectedLaunch, setSelectedLaunch] = useState({});
+
   return (
-    <Container maxWidth={false} sx={{ minWidth: 950 }}>
+    <Container maxWidth={false} sx={{ overflow: 'hidden' }}>
       <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <List setSelectedLaunch={setSelectedLaunch} />
+        <Grid item md={3} xs={0}>
+          <Hidden mdDown>
+            <List setSelectedLaunch={setSelectedLaunch} />
+          </Hidden>
+          <Hidden mdUp>
+            <Drawer setSelectedLaunch={setSelectedLaunch} />
+          </Hidden>
         </Grid>
-        <Grid item xs={9}>
+        <Grid item md={9} xs={12}>
           <DetailView selectedLaunch={selectedLaunch} />
         </Grid>
       </Grid>
