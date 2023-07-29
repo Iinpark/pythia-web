@@ -22,36 +22,40 @@ const List = ({
   ));
 
   return (
-    <React.Fragment>
-      <MList>
-        {status === 'loading' && skeletons}
+    <MList
+      sx={{
+        height: '100vh',
+        overflow: 'auto',
+        paddingRight: 0,
+        // overflowY: 'scroll',
+      }}>
+      {status === 'loading' && skeletons}
 
-        {launches.map((item) => {
-          const time = item.t0 && new Date(item.t0).toLocaleString('ru');
-          const header = `${item.provider.name} • ${item.name}`;
-          const subheader = `${item.provider.name} • ${item.vehicle.name} • ${
-            time || 'Время старта неизвестно'
-          }`;
+      {launches.map((item) => {
+        const time = item.t0 && new Date(item.t0).toLocaleString('ru');
+        const header = `${item.provider.name} • ${item.name}`;
+        const subheader = `${item.provider.name} • ${item.vehicle.name} • ${
+          time || 'Время старта неизвестно'
+        }`;
 
-          return (
-            <ListItem
-              onClick={() => {
-                location.hash = `id=${item.id}`;
-                setSelectedLaunch(item);
-              }}
-              disablePadding
-              key={item.id}>
-              <ListItemButton>
-                <ListItemAvatar>
-                  <Avatar alt={item.name} src={item.image} />
-                </ListItemAvatar>
-                <ListItemText primary={header} secondary={subheader} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </MList>
-    </React.Fragment>
+        return (
+          <ListItem
+            onClick={() => {
+              location.hash = `id=${item.id}`;
+              setSelectedLaunch(item);
+            }}
+            disablePadding
+            key={item.id}>
+            <ListItemButton>
+              <ListItemAvatar>
+                <Avatar alt={item.name} src={item.image} />
+              </ListItemAvatar>
+              <ListItemText primary={header} secondary={subheader} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
+    </MList>
   );
 };
 
