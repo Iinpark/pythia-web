@@ -8,8 +8,7 @@ import {
 } from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import App from './App';
-import './index.css';
-import './App.css';
+import '@shared/ui/Scrollbar/scrollbar.scss';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
