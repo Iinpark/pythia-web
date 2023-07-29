@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
+
 import YTIframe from '@shared/ui/Media/YTIframe';
+import LoadingState from './ui/LoadingState';
+
 import { LaunchData } from '@shared/interfaces';
 import { queryLaunchDetails } from '@shared/api/index';
 import './index.scss';
@@ -21,8 +24,9 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
   );
   const launchDetails = data! || {};
 
-  if (status === 'loading')
-    return <Typography variant='h1'>Loading...</Typography>;
+  // if (true) return <LoadingState />;
+  if (status === 'loading') return <LoadingState />;
+
   return (
     <div className='detail-view'>
       {error! && <Typography variant='h1'>Error</Typography>}
