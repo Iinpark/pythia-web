@@ -1,3 +1,5 @@
-export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+function App() {
+  return <div>select launch from right panel</div>;
 }
+
+export default App;

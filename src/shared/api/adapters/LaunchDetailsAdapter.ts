@@ -10,7 +10,7 @@ import {
   SerializedMissionPatch,
   VideoSource,
 } from '../../interfaces/LaunchDetails';
-import { LaunchDataAdapter } from './index.js';
+import { LaunchDataAdapter } from './index.ts';
 
 export function UpdateAdapter(serializedUpdate: SerializedUpdate): Update {
   return {

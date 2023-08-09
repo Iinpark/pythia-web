@@ -3,11 +3,7 @@
     "target": "ESNext",
     "baseUrl": "src",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,12 +17,9 @@
     "noEmit": true,
     "jsx": "preserve",
     "paths": {
-      "@shared/*": [
-        "shared/*"
-      ],
-      "@widgets/*": [
-        "widgets/*"
-      ]
+      "@app/*": ["app/*"],
+      "@shared/*": ["shared/*"],
+      "@widgets/*": ["widgets/*"]
     },
     "incremental": true,
     "plugins": [
@@ -35,16 +28,12 @@
       }
     ]
   },
-  "include": [
-    "src",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["src", ".next/types/**/*.ts", "app/launch/[launchid]"],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
+

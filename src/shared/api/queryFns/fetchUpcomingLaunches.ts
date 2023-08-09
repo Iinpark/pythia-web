@@ -1,6 +1,6 @@
 import fetcher from '../fetcher';
 import { SerializedLaunchData, LaunchData } from '../../interfaces';
-import { LaunchDataAdapter } from '../adapters/index.js';
+import { LaunchDataAdapter } from '../adapters/index.ts';
 
 const fetchUpcomingLaunches = async (): Promise<Array<LaunchData>> => {
   const response = await fetcher(`/launch/upcoming/`);

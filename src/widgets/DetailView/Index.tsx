@@ -1,35 +1,24 @@
+'use client';
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
-
 import YTIframe from '@shared/ui/Media/YTIframe';
-import LoadingState from './ui/LoadingState';
-
-import { LaunchData } from '@shared/interfaces';
-import { queryLaunchDetails } from '@shared/api/index';
+import { LaunchDetails } from '@shared/interfaces';
 import './index.scss';
 
-type DetailViewProps = { selectedLaunch: LaunchData | {} };
+type DetailViewProps = { selectedLaunch: LaunchDetails | {} };
 
 const DetailView = ({ selectedLaunch }: DetailViewProps) => {
-  const isHasHash = location.hash.includes('id=');
-  if (!selectedLaunch?.name && !isHasHash) return null;
-
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   useEffect(() => {
     setIsImageLoaded(false);
   }, [selectedLaunch]);
+  useEffect(() => {
+    setIsImageLoaded(true);
+  }, []);
 
-  const { data, status, error } = queryLaunchDetails(
-    selectedLaunch.id || location.hash.replace('#id=', '')
-  );
-  const launchDetails = data! || {};
-
-  // if (true) return <LoadingState />;
-  if (status === 'loading') return <LoadingState />;
-
+  const launchDetails = selectedLaunch as LaunchDetails;
   return (
-    <div className='detail-view'>
-      {error! && <Typography variant='h1'>Error</Typography>}
+    <section className='detail-view'>
       {launchDetails.image && (
         <img
           onLoad={() => setIsImageLoaded(true)}
@@ -50,7 +39,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
         launchDetails.vidURLs[0].source === 'youtube' && (
           <YTIframe src={launchDetails.vidURLs[0]?.url} />
         )}
-    </div>
+    </section>
   );
 };
 
