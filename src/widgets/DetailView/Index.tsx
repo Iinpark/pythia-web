@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import YTIframe from '@shared/ui/Media/YTIframe';
 import { LaunchDetails } from '@shared/interfaces';
 import './index.scss';
@@ -32,7 +33,20 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
           width='100%'
         />
       )}
-      <Typography variant='h1'>{launchDetails.name}</Typography>
+      <Typography variant='h1'>
+        {launchDetails.name}
+        {launchDetails.infoURLs[0] && (
+          <Typography variant='h6'>
+            <a
+              className='learn-more-link'
+              target='_blank'
+              href={launchDetails.infoURLs[0].url}>
+              Подробнее
+              <OpenInNewIcon />
+            </a>
+          </Typography>
+        )}
+      </Typography>
       <Typography variant='h5'>{launchDetails.mission_description}</Typography>
 
       {launchDetails.vidURLs[0] &&
