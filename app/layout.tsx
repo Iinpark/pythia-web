@@ -7,16 +7,11 @@ import Drawer from '@widgets/LaunchesList/ui/Drawer';
 import Grid from '@mui/material/Grid';
 import Hidden from '@mui/material/Hidden';
 
+import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
 
-import {
-  Experimental_CssVarsProvider as CssVarsProvider,
-  experimental_extendTheme as extendTheme,
-} from '@mui/material/styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-import ThemeRegistry from '../src/app/theme/ThemeRegistry';
 
 import '@shared/ui/Scrollbar/scrollbar.scss';
 import '@fontsource/roboto/300.css';
@@ -29,8 +24,6 @@ const darkTheme = createTheme({
     mode: 'dark',
   },
 });
-const theme = extendTheme();
-delete theme.colorSchemes.light;
 
 export default function RootLayout({
   children,
@@ -49,30 +42,35 @@ export default function RootLayout({
         },
       })
   );
+
+  // <ThemeProvider theme={darkTheme}>
+  // <CssVarsProvider
+  //   theme={theme}
+  //   defaultColorScheme={'dark'}></CssVarsProvider>
+  // <CssBaseline />
   return (
     <html lang='en'>
       <body>
-        <ThemeRegistry>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
           <QueryClientProvider client={queryClient}>
-            <ReactQueryStreamedHydration>
-              <Container maxWidth={false} sx={{ overflow: 'hidden' }}>
-                <Grid container spacing={2}>
-                  <Grid item md={3} xs={0}>
-                    <Hidden mdDown>
-                      <List />
-                    </Hidden>
-                    <Hidden mdUp>
-                      <Drawer />
-                    </Hidden>
-                  </Grid>
-                  <Grid item md={9} xs={12}>
-                    {children}
-                  </Grid>
+            <Container maxWidth={false} sx={{ overflow: 'hidden' }}>
+              <Grid container spacing={2}>
+                <Grid item md={3} xs={0}>
+                  <Hidden mdDown>
+                    <List />
+                  </Hidden>
+                  <Hidden mdUp>
+                    <Drawer />
+                  </Hidden>
                 </Grid>
-              </Container>
-            </ReactQueryStreamedHydration>
+                <Grid item md={9} xs={12}>
+                  {children}
+                </Grid>
+              </Grid>
+            </Container>
           </QueryClientProvider>
-        </ThemeRegistry>
+        </ThemeProvider>
       </body>
     </html>
   );

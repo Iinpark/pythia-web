@@ -6,7 +6,6 @@ const queryLaunchDetails = (launchId: string) => {
     queryKey: ['launchDetails', launchId],
     queryFn: () => fetchLaunchDetails(launchId),
     staleTime: 1000 * 60 * 5,
-    initialData: {},
   });
 
   return result;

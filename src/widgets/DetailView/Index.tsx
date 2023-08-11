@@ -33,7 +33,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
           width='100%'
         />
       )}
-      <Typography variant='h1'>
+      <Typography variant='h1' sx={{ marginBottom: '32px' }}>
         {launchDetails.name}
         {launchDetails.infoURLs[0] && (
           <Typography variant='h6'>

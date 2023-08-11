@@ -4,7 +4,6 @@ import fetchLaunchDetails from '@shared/api/queryFns/fetchLaunchDetails';
 
 type routeParams = {
   params: { launchid: string };
-  pageProps: { dehydratedState: any };
 };
 
 export async function generateStaticParams() {
@@ -13,7 +12,7 @@ export async function generateStaticParams() {
   return launches.map((launch) => ({ launchid: launch.id }));
 }
 
-const Page = async ({ params, pageProps }: routeParams) => {
+const Page = async ({ params }: routeParams) => {
   // const { data, status, error } = queryLaunchDetails(params.launchid);
   // const launchDetails = data! || {};
   const data = await fetchLaunchDetails(params.launchid);

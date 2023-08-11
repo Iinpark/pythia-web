@@ -11,7 +11,7 @@ import '../index.scss';
 import Link from 'next/link';
 
 const List = () => {
-  const { data, status } = queryUpcomingLaunches();
+  const { data, status, isLoading } = queryUpcomingLaunches();
   const launches = data || [];
 
   const skeletons = Array.from({ length: 10 }, (_, index) => (
@@ -25,7 +25,7 @@ const List = () => {
         overflow: 'auto',
         paddingRight: 0,
       }}>
-      {status === 'loading' && skeletons}
+      {isLoading && skeletons}
 
       {launches.map((item) => {
         const time = item.t0 && new Date(item.t0).toLocaleString('ru');
