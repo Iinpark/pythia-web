@@ -2,7 +2,7 @@
 Мини-проект показывающий 10 ближайших пусков ракет. <br>
 Написанно на Next.js, задеплоено на Vercel
 
-liftoff.kz
+[www.liftoff.kz](www.liftoff.kz)
 
 ## идеи
 https://ll.thespacedevs.com/2.2.0/swagger/#/launch/launch_upcoming_list
