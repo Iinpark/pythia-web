@@ -11,7 +11,7 @@ import '../index.scss';
 import Link from 'next/link';
 
 const List = () => {
-  const { data, status, isLoading } = queryUpcomingLaunches();
+  const { data, isLoading } = queryUpcomingLaunches();
   const launches = data || [];
 
   const skeletons = Array.from({ length: 10 }, (_, index) => (

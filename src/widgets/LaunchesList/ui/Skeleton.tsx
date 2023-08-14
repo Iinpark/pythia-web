@@ -11,7 +11,7 @@ const Skeleton = () => {
         opacity: 0.5,
       }}
       variant='rectangular'
-      width={300}
+      width={'100%'}
       height={100}
     />
   );
