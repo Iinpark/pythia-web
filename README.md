@@ -1,8 +1,8 @@
 # pythia-web
 Мини-проект показывающий 10 ближайших пусков ракет. <br>
-Написанно на Реакте, задеплоено на Firebase
+Написанно на Next.js, задеплоено на Vercel
 
-https://pythia-web-38aa6.web.app/
+liftoff.kz
 
 ## идеи
 https://ll.thespacedevs.com/2.2.0/swagger/#/launch/launch_upcoming_list
@@ -14,16 +14,16 @@ https://github.com/vasturiano/globe.gl
 
 - Вы можете добавить возможность подписаться на уведомления о предстоящих пусках по электронной почте или в социальных сетях. Это поможет привлечь и удержать аудиторию, которая не хочет пропустить ни одного пуска. Например, на сайте 3 есть такая возможность.
 
+- Add SpaceX twitter feed with live updates *
+
+- Add Must Watch badge for launches that are particularly interesting *
 
 <!-- перенос строки markdown -->
-
 возможная цветовая палитра
-
-
-
 
 #002439	(0,36,57) <br>
 #005066	(0,80,102) <br>
 #4e7988	(78,121,136) <br>
 #78cce2	(120,204,226) <br>
 #e4eff0	(228,239,240) <br>
+
