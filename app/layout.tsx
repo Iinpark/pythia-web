@@ -9,7 +9,7 @@ import Hidden from '@mui/material/Hidden';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
+import { Analytics } from '@vercel/analytics/react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -66,6 +66,7 @@ export default function RootLayout({
             </Container>
           </QueryClientProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
