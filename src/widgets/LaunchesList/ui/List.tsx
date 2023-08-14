@@ -6,15 +6,12 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { queryUpcomingLaunches } from '@shared/api/index';
-import Skeleton from './Skeleton.jsx';
+import Skeleton from './Skeleton.tsx';
 import '../index.scss';
+import Link from 'next/link';
 
-const List = ({
-  setSelectedLaunch,
-}: {
-  setSelectedLaunch: React.Dispatch<React.SetStateAction<{}>>;
-}) => {
-  const { data, status } = queryUpcomingLaunches();
+const List = () => {
+  const { data, isLoading } = queryUpcomingLaunches();
   const launches = data || [];
 
   const skeletons = Array.from({ length: 10 }, (_, index) => (
@@ -27,9 +24,8 @@ const List = ({
         height: '100vh',
         overflow: 'auto',
         paddingRight: 0,
-        // overflowY: 'scroll',
       }}>
-      {status === 'loading' && skeletons}
+      {isLoading && skeletons}
 
       {launches.map((item) => {
         const time = item.t0 && new Date(item.t0).toLocaleString('ru');
@@ -39,19 +35,23 @@ const List = ({
         }`;
 
         return (
-          <ListItem
-            onClick={() => {
-              location.hash = `id=${item.id}`;
-              setSelectedLaunch(item);
-            }}
-            disablePadding
-            key={item.id}>
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar alt={item.name} src={item.image} />
-              </ListItemAvatar>
-              <ListItemText primary={header} secondary={subheader} />
-            </ListItemButton>
+          <ListItem disablePadding key={item.id}>
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'inherit',
+              }}
+              href={`/launch/${item.id}`}>
+              <ListItemButton
+                sx={{
+                  textDecoration: 'none',
+                }}>
+                <ListItemAvatar>
+                  <Avatar alt={item.name} src={item.image} />
+                </ListItemAvatar>
+                <ListItemText primary={header} secondary={subheader} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         );
       })}

@@ -3,7 +3,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, Fab } from '@mui/material';
 import List from './List';
 
-const SDrawer = (props) => {
+const SDrawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
 
   return (
@@ -27,7 +27,7 @@ const SDrawer = (props) => {
         }}
         open={isDrawerOpen}
         onClick={() => setIsDrawerOpen(false)}>
-        <List {...props} />
+        <List />
       </Drawer>
     </React.Fragment>
   );

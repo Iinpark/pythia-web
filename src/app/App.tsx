@@ -14,10 +14,10 @@ function App() {
       <Grid container spacing={2}>
         <Grid item md={3} xs={0}>
           <Hidden mdDown>
-            <List setSelectedLaunch={setSelectedLaunch} />
+            <List />
           </Hidden>
           <Hidden mdUp>
-            <Drawer setSelectedLaunch={setSelectedLaunch} />
+            <Drawer />
           </Hidden>
         </Grid>
         <Grid item md={9} xs={12}>

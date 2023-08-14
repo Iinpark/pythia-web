@@ -31,7 +31,7 @@ const darkTheme = createTheme({
   },
 });
 const theme = extendTheme();
-delete theme.colorSchemes.light;
+// delete theme.colorSchemes.light;
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
