@@ -43,11 +43,6 @@ export default function RootLayout({
       })
   );
 
-  // <ThemeProvider theme={darkTheme}>
-  // <CssVarsProvider
-  //   theme={theme}
-  //   defaultColorScheme={'dark'}></CssVarsProvider>
-  // <CssBaseline />
   return (
     <html lang='en'>
       <body>
