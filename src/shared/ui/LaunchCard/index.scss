@@ -26,12 +26,12 @@
 
   &_title {
     @media (max-width: 900px) {
-      font-size: 2rem;
+      font-size: 2rem !important;
     }
   }
   &_subtitle {
     @media (max-width: 900px) {
-      font-size: 1rem;
+      font-size: 1rem !important;
     }
   }
 }
