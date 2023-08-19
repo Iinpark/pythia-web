@@ -5,7 +5,7 @@ import { Drawer, Fab } from '@mui/material';
 import List from './List';
 
 const SDrawer = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   return (
     <React.Fragment>
