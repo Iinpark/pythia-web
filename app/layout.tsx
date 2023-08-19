@@ -2,10 +2,7 @@
 
 import React from 'react';
 import Container from '@mui/material/Container';
-import List from '@widgets/LaunchesList/ui/List';
-import Drawer from '@widgets/LaunchesList/ui/Drawer';
 import Grid from '@mui/material/Grid';
-import Hidden from '@mui/material/Hidden';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -52,14 +49,6 @@ export default function RootLayout({
           <QueryClientProvider client={queryClient}>
             <Container maxWidth={false} sx={{ overflow: 'hidden' }}>
               <Grid container spacing={0}>
-                <Grid style={{ display: 'none' }} item md={3} xs={0}>
-                  <Hidden mdDown>
-                    <List />
-                  </Hidden>
-                  <Hidden mdUp>
-                    <Drawer />
-                  </Hidden>
-                </Grid>
                 <Grid item md={12} xs={12}>
                   {children}
                 </Grid>

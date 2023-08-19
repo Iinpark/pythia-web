@@ -20,4 +20,18 @@
   &:focus-within {
     filter: brightness(1);
   }
+  @media (max-width: 900px) {
+    filter: brightness(1);
+  }
+
+  &_title {
+    @media (max-width: 900px) {
+      font-size: 2rem;
+    }
+  }
+  &_subtitle {
+    @media (max-width: 900px) {
+      font-size: 1rem;
+    }
+  }
 }

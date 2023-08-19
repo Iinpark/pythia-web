@@ -12,12 +12,15 @@ export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
       className='launch-card'
       style={{ backgroundImage: `url(${launchData.image})` }}>
       <Link href={`/launch/${launchData.id}`}>
-        <Typography variant='h1'>{launchData.name}</Typography>
+        <Typography className='launch-card_title' variant='h1'>
+          {launchData.name}
+        </Typography>
       </Link>
-      <Typography variant='h4'>{date}</Typography>
+      <Typography className='launch-card_subtitle' variant='h4'>
+        {date}
+      </Typography>
     </article>
   );
 };
 
 export default LaunchCard;
-  
