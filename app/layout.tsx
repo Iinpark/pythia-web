@@ -14,6 +14,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import '@shared/ui/Scrollbar/scrollbar.scss';
+import '@app/main.scss';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -50,8 +51,8 @@ export default function RootLayout({
           <CssBaseline />
           <QueryClientProvider client={queryClient}>
             <Container maxWidth={false} sx={{ overflow: 'hidden' }}>
-              <Grid container spacing={2}>
-                <Grid item md={3} xs={0}>
+              <Grid container spacing={0}>
+                <Grid style={{ display: 'none' }} item md={3} xs={0}>
                   <Hidden mdDown>
                     <List />
                   </Hidden>
@@ -59,7 +60,7 @@ export default function RootLayout({
                     <Drawer />
                   </Hidden>
                 </Grid>
-                <Grid item md={9} xs={12}>
+                <Grid item md={12} xs={12}>
                   {children}
                 </Grid>
               </Grid>

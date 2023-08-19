@@ -1,0 +1,23 @@
+.launch-card {
+  min-width: 300px;
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  filter: brightness(0.5);
+
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: filter, 0.2s;
+  filter: brightness(0.5);
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    filter: brightness(1);
+  }
+}
