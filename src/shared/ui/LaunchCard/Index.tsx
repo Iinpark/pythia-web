@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import Link from 'next/link';
 
 export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
-  const date = new Date(launchData.t0).toDateString();
+  const date = new Date(launchData.t0).toLocaleString('ru');
 
   return (
     <article
