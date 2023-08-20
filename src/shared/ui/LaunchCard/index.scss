@@ -1,4 +1,6 @@
 .launch-card {
+  position: relative;
+
   min-width: 300px;
   min-height: 100px;
 
@@ -8,9 +10,6 @@
   filter: brightness(0.5);
 
   aspect-ratio: 16/9;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
   transition: filter, 0.2s;
   filter: brightness(0.5);
@@ -24,6 +23,9 @@
     filter: brightness(1);
   }
 
+  &_content {
+    z-index: 1;
+  }
   &_title {
     @media (max-width: 900px) {
       font-size: 2rem !important;
