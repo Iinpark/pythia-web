@@ -5,11 +5,7 @@ import { Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const LaunchCard = async ({
-  launchData,
-}: {
-  launchData: LaunchData;
-}) => {
+export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
   const date = new Date(launchData.t0).toLocaleString('ru');
 
   return (
