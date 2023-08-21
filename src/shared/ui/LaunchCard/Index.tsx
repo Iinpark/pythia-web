@@ -11,8 +11,9 @@ export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
   return (
     <article className='launch-card'>
       <Image
-        className='launch-card_image'
         fill
+        objectFit='cover'
+        className='launch-card_image'
         src={launchData.image}
         alt={launchData.name}
       />
