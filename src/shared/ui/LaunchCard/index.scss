@@ -1,0 +1,39 @@
+.launch-card {
+  position: relative;
+
+  min-width: 300px;
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  filter: brightness(0.5);
+
+  aspect-ratio: 16/9;
+
+  transition: filter, 0.2s;
+  filter: brightness(0.5);
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    filter: brightness(1);
+  }
+  @media (max-width: 900px) {
+    filter: brightness(1);
+  }
+
+  &_content {
+    z-index: 1;
+  }
+  &_title {
+    @media (max-width: 900px) {
+      font-size: 2rem !important;
+    }
+  }
+  &_subtitle {
+    @media (max-width: 900px) {
+      font-size: 1rem !important;
+    }
+  }
+}

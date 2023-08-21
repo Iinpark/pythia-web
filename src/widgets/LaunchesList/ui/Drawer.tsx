@@ -1,10 +1,11 @@
+'use client';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, Fab } from '@mui/material';
 import List from './List';
 
 const SDrawer = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
 
   return (
     <React.Fragment>
