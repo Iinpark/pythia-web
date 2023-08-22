@@ -18,7 +18,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
     setIsImageLoaded(true);
   }, []);
   const launchDetails = selectedLaunch as LaunchDetails;
-  const isYoutubeVideo = isYoutubeUrl(launchDetails.vidURLs[0].url);
+  const isYoutubeVideo = isYoutubeUrl(launchDetails.vidURLs[0]?.url);
   return (
     <section className='detail-view'>
       {launchDetails.image && (
@@ -50,7 +50,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
       </Typography>
       <Typography variant='h5'>{launchDetails.mission_description}</Typography>
 
-      {isYoutubeVideo && <YTIframe src={launchDetails.vidURLs[0]?.url} />}
+      {isYoutubeVideo && <YTIframe src={launchDetails.vidURLs[0].url} />}
     </section>
   );
 };

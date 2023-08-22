@@ -26,18 +26,17 @@ export const stringAssembler = (
   }, template);
 };
 
-export const isYoutubeUrl = (url) => {
+export const isYoutubeUrl = (url: string) => {
   const youtubeUrlPattern =
     /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/g;
   return youtubeUrlPattern.test(url);
 };
 
-export const getYouTubeVideoId = (url) => {
-  const youtubeUrlPattern =
-    /^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$/g;
+export const getYouTubeVideoId = (url: string) => {
+  if (!url.length) return false;
+  if (!isYoutubeUrl(url)) return false;
+
   const youtubeVideoIdPattern = /(?<=v=|\/)([a-zA-Z0-9_-]{11})(?=&|$|\/)/;
-  if (youtubeUrlPattern.test(url)) {
-    return url.match(youtubeVideoIdPattern)[0];
-  }
-  return null;
+
+  return url.match(youtubeVideoIdPattern)?.[0];
 };
