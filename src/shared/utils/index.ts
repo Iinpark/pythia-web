@@ -16,8 +16,8 @@ type StringAssemblerTemplate = string;
  * ```
  */
 export const stringAssembler = (
-  tokens: StringAssemblerTokens,
-  template: StringAssemblerTemplate
+  template: StringAssemblerTemplate,
+  tokens: StringAssemblerTokens
 ) => {
   return Object.keys(tokens).reduce((acc, key) => {
     const tokenPattern = new RegExp(`{${key}}`, 'g');
