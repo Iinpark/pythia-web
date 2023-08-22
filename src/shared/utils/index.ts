@@ -1,4 +1,5 @@
-export const toDisplayableDate = (date) => Date(date).toLocaleString();
+export const toDisplayableDate = (date: number) =>
+  new Date(date).toLocaleString();
 
 type StringAssemblerTokens = {
   [key: string]: string;
