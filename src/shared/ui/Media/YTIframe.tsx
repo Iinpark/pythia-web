@@ -1,5 +1,6 @@
 import React from 'react';
 import './YTIframe.scss';
+import { getYouTubeVideoId } from '@shared/utils';
 
 type YTIframeProps = {
   src: string;
@@ -8,7 +9,7 @@ type YTIframeProps = {
 };
 const YTIframe = (props: YTIframeProps) => {
   const { src = '', height = '', width = '' } = props;
-  const vidId = src.split('v=')[1];
+  const vidId = getYouTubeVideoId(src);
   if (!src) return <div></div>;
 
   return (

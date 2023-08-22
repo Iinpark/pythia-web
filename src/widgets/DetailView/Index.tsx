@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import YTIframe from '@shared/ui/Media/YTIframe';
 import { LaunchDetails } from '@shared/interfaces';
+import { isYoutubeUrl } from '@shared/utils';
 import './index.scss';
 
 type DetailViewProps = { selectedLaunch: LaunchDetails | {} };
@@ -16,8 +17,8 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
   useEffect(() => {
     setIsImageLoaded(true);
   }, []);
-
   const launchDetails = selectedLaunch as LaunchDetails;
+  const isYoutubeVideo = isYoutubeUrl(launchDetails.vidURLs[0]?.url);
   return (
     <section className='detail-view'>
       {launchDetails.image && (
@@ -49,10 +50,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
       </Typography>
       <Typography variant='h5'>{launchDetails.mission_description}</Typography>
 
-      {launchDetails.vidURLs[0] &&
-        launchDetails.vidURLs[0].source === 'youtube' && (
-          <YTIframe src={launchDetails.vidURLs[0]?.url} />
-        )}
+      {isYoutubeVideo && <YTIframe src={launchDetails.vidURLs[0].url} />}
     </section>
   );
 };
