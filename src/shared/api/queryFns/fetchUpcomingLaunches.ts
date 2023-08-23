@@ -3,7 +3,7 @@ import { SerializedLaunchData, LaunchData } from '../../interfaces';
 import { LaunchDataAdapter } from '../adapters/index.ts';
 
 const fetchUpcomingLaunches = async (): Promise<Array<LaunchData>> => {
-  const response = await fetcher(`/launch/upcoming/`);
+  const response = await fetcher(`/launch/upcoming?limit=10`);
   if (!response.ok) {
     throw new Error(response.statusText);
   }

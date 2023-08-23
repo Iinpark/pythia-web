@@ -10,13 +10,17 @@ export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
 
   return (
     <article className='launch-card'>
-      <Image
-        fill
-        objectFit='cover'
-        className='launch-card_image'
-        src={launchData.image}
-        alt={launchData.name}
-      />
+      {launchData.image && (
+        <Image
+          fill
+          style={{
+            objectFit: 'cover',
+          }}
+          className='launch-card_image'
+          src={launchData.image}
+          alt={launchData.name}
+        />
+      )}
       <div className='launch-card_content'>
         <Link href={`/launch/${launchData.id}`}>
           <Typography className='launch-card_title' variant='h1'>

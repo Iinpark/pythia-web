@@ -7,6 +7,7 @@ function LaunchDataAdapter(
     id: serializedLaunchData.id,
     name: serializedLaunchData.name,
     image: serializedLaunchData.image,
+    updated: serializedLaunchData.last_updated,
     provider: {
       id: serializedLaunchData.launch_service_provider.id,
       name: serializedLaunchData.launch_service_provider.name,
