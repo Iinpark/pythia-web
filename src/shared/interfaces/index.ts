@@ -5,6 +5,7 @@ import { LaunchDetails, SerializedLaunchDetails } from './LaunchDetails';
  * @property {number} id - The ID of the launch
  * @property {string} name - The name of the launch
  * @property {string} image - The image of the rocket going to be launched
+ * @property {string} updated - The date and time of the last update in ISO format
  * @property {Object} provider - The provider of the launch
  * @property {number} provider.id - The ID of the provider
  * @property {string} provider.name - The name of the provider
@@ -43,6 +44,7 @@ export interface LaunchData {
   id: string;
   name: string;
   image: string;
+  updated: string;
   provider: {
     id: number;
     name: string;
