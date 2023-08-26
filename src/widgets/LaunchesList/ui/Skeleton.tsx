@@ -11,6 +11,7 @@ const Skeleton = () => {
         opacity: 0.5,
       }}
       variant='rectangular'
+      animation='wave'
       width={'100%'}
       height={100}
     />
