@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import YTIframe from '@shared/ui/Media/YTIframe';
 import { LaunchDetails } from '@shared/interfaces';
@@ -22,7 +23,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
   return (
     <section className='detail-view'>
       {launchDetails.image && (
-        <img
+        <Image
           onLoad={() => setIsImageLoaded(true)}
           className={
             isImageLoaded
@@ -31,7 +32,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
           }
           src={launchDetails.image}
           alt=''
-          width='100%'
+          fill
         />
       )}
       <Typography variant='h1' sx={{ marginBottom: '32px' }}>
@@ -42,7 +43,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
               className='learn-more-link'
               target='_blank'
               href={launchDetails.infoURLs[0].url}>
-              Подробнее
+              Learn more
               <OpenInNewIcon />
             </a>
           </Typography>
