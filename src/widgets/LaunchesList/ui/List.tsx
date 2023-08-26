@@ -10,6 +10,7 @@ import { queryUpcomingLaunches } from '@shared/api/index';
 import Skeleton from './Skeleton.tsx';
 import '../index.scss';
 import Link from 'next/link';
+import { toDisplayableDate } from '@shared/utils';
 
 const List = () => {
   const { data, isLoading } = queryUpcomingLaunches();
@@ -29,7 +30,7 @@ const List = () => {
       {isLoading && skeletons}
 
       {launches.map((item) => {
-        const time = item.t0 && new Date(item.t0).toLocaleString('ru');
+        const time = toDisplayableDate(item.t0);
         const header = `${item.provider.name} • ${item.name}`;
         const subheader = `${item.provider.name} • ${item.vehicle.name} • ${
           time || 'Время старта неизвестно'

@@ -1,5 +1,10 @@
-export const toDisplayableDate = (date: number) =>
-  new Date(date).toLocaleString();
+export const toDisplayableDate = (isoString: string) => {
+  const date = new Date(isoString);
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  return date.toLocaleString('ru', {
+    timeZone: userTimezone,
+  });
+};
 
 type StringAssemblerTokens = {
   [key: string]: string;

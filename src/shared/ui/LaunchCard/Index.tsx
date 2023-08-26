@@ -4,9 +4,10 @@ import { LaunchData } from '@shared/interfaces';
 import { Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import { toDisplayableDate } from '@shared/utils';
 
 export const LaunchCard = ({ launchData }: { launchData: LaunchData }) => {
-  const date = new Date(launchData.t0).toLocaleString('ru');
+  const date = toDisplayableDate(launchData.t0);
 
   return (
     <article className='launch-card'>
