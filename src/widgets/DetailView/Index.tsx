@@ -42,7 +42,7 @@ const DetailView = ({ selectedLaunch }: DetailViewProps) => {
               className='learn-more-link'
               target='_blank'
               href={launchDetails.infoURLs[0].url}>
-              Подробнее
+              Learn more
               <OpenInNewIcon />
             </a>
           </Typography>
