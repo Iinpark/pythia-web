@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "target": "ESNext",
-    "baseUrl": "src",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
@@ -17,10 +16,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
-      "@app/*": ["app/*"],
-      "@shared/*": ["shared/*"],
-      "@widgets/*": ["widgets/*"]
+      "@app/*": ["src/app/*"],
+      "@shared/*": ["src/shared/*"],
+      "@widgets/*": ["src/widgets/*"]
     },
     "incremental": true,
     "plugins": [
@@ -37,4 +37,3 @@
   ],
   "exclude": ["node_modules"]
 }
-
